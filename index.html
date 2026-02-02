@@ -129,13 +129,12 @@
 </head>
 <body>
     <div id="startScreen" onclick="startWeb()">
-  <h1>Tap anywhere to start 💗</h1>
-</div>
+        <h1>Tap anywhere to start 💗</h1>
+    </div>
     
      <!-- Elemen Audio untuk Lagu Latar Belakang -->
     <audio id="bg-music" loop preload="auto">
         <source src="call you mine.mp3" type="audio/mpeg">
-        Browser Anda tidak mendukung elemen audio.
     </audio>
 
     <!-- Layer 1: Opening -->
@@ -182,6 +181,14 @@
     </div>
 
     <script>
+        // Fungsi tap buat mulai musik
+        function startWeb() {
+            const music = document.getElementById("bg-music");
+            music.volume = 0.4;
+            music.play().catch(() => {});
+            document.getElementById("startScreen").style.display = "none";
+        }
+        
         // Fungsi navigasi layer
         function nextLayer(layerNum) {
             document.querySelectorAll('.layer').forEach(layer => layer.classList.remove('active'));
