@@ -1,276 +1,196 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro Love 8-bit CIE CIE CIE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>APA  NIHHH???? 💗</title>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
         
-        #startScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            cursor: pointer;
-}
+        <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+            
+            body {
+                font-family:'Press Start 2P', monospace;
+                background: linear-gradient(135deg,#2e003e,#000080,#000);
+                color:#ffe4e1;
+                height:100vh;
+                overflow:hidden;
+            }
 
-        body {
-            font-family: 'Press Start 2P', monospace;
-            background: linear-gradient(135deg, #2e003e, #000080, #000000);
-            color: #ffb3ba;
-            overflow: hidden;
-            position: relative;
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-            transition: opacity 0.5s ease;
-            opacity: 0;
-        }
-        .layer.active {
-            display: flex;
-            opacity: 1;
-        }
-        h1, h2 {
-            font-size: 1.5rem;
-            color: #ffe4e1;
-            text-shadow: 1px 1px #ffb3ba;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 0.8rem;
-            color: #ffdab9;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        button {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.7rem;
-            padding: 10px 20px;
-            background: #ffb3ba;
-            color: #2e003e;
-            border: 2px solid #ffe4e1;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin: 10px;
-            min-width: 150px;
-        }
-        button:hover {
-            background: #ffe4e1;
-            box-shadow: 0 0 10px #ffb3ba;
-        }
-        #no {
-            position: absolute;
-            background: #ffdab9;
-            border-color: #ffb3ba;
-        }
-        #no:hover {
-            background: #ffb3ba;
-        }
-        .success {
-            display: none;
-            font-size: 1rem;
-            color: #ffe4e1;
-            text-shadow: 1px 1px #ffb3ba;
-            text-align: center;
-        }
-        /* Animasi Love 8-bit */
-        .love-particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        .particle {
-            position: absolute;
-            font-size: 1rem;
-            color: #ffb3ba;
-            animation: pixel-dreamy-up 6s linear infinite;
-            opacity: 0.6;
-        }
-        .particle.down {
-            animation: pixel-dreamy-down 6s linear infinite;
-        }
-        .particle.yellow {
-            color: #ffff99;
-        }
-        @keyframes pixel-dreamy-up {
-            0% { transform: translateY(100vh) scale(1); }
-            50% { transform: translateY(50vh) scale(1.1); }
-            100% { transform: translateY(0vh) scale(0.9); }
-        }
-        @keyframes pixel-dreamy-down {
-            0% { transform: translateY(0vh) scale(1); }
-            50% { transform: translateY(50vh) scale(1.1); }
-            100% { transform: translateY(100vh) scale(0.9); }
-        }
-        /* Responsif */
-        @media (max-width: 768px) {
-            h1, h2 { font-size: 1.2rem; }
-            p { font-size: 0.6rem; }
-            button { font-size: 0.6rem; padding: 8px 15px; min-width: 120px; }
-        }
-    </style>
-</head>
-<body>
-    <div id="startScreen" onclick="startWeb()">
-        <h1>Tap anywhere to start 💗</h1>
-    </div>
+            /* START SCREEN */
+            #startScreen{
+                position:fixed;
+                inset:0;
+                background:#000;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                z-index:9999;
+                cursor:pointer;
+            }
+            
+            /* PARTICLES */
+            #particles{
+                position:fixed;
+                inset:0;
+                pointer-events:none;
+                z-index:1;
+            }
+            
+            .particle{
+                position:absolute;
+                font-size:18px;
+                opacity:.7;
+                animation:floatUp linear infinite;
+            }
+            
+            .down{ animation:floatDown linear infinite; }
+            
+            @keyframes floatUp{
+                from{ transform:translateY(100vh); }
+                to{ transform:translateY(-10vh); }
+            }
+            @keyframes floatDown{
+                from{ transform:translateY(-10vh); }
+                to{ transform:translateY(100vh); }
+            }
+            
+            /* LAYERS */
+            .layer{
+                position:fixed;
+                inset:0;
+                display:none;
+                z-index:2;
+                text-align:center;
+                padding:20px;
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                justify-content:center;
+            }
+            
+            .layer.active{ display:flex; }
+            
+            h1,h2{ margin-bottom:20px; }
+            p{ font-size:.7rem; margin-bottom:15px; line-height:1.5; }
+            
+            button{
+                font-family:'Press Start 2P';
+                padding:10px 20px;
+                margin:10px;
+                cursor:pointer;
+                background:#ffb3ba;
+                border:2px solid #fff;
+            }
+            
+            #no{
+    position:absolute;
+            }
+            
+            .success{
+    display:none;
+            }
+        </style>
+    </head>
     
-     <!-- Elemen Audio untuk Lagu Latar Belakang -->
-    <audio id="bg-music" loop preload="auto">
-        <source src="call you mine.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Layer 1: Opening -->
-    <div class="layer" id="layer1">
-    </div>
-    
-      <!-- Layer 2: Opening -->
-    <div class="layer" id="layer2">
-        <h1>Hey kamu...</h1>
-        <p>Iya kamu, yang lagi baca ini 👀</p>
-        <p>Aku cuma mau minta waktumu sebentar...</p>
-        <button onclick="nextLayer(3)">Next 💖</button>
-    </div>
-
-
-    <!-- Layer 3: Build Up -->
-    <div class="layer" id="layer3">
-        <h2>Dari kapan yaa?, dari CH...</h2>
-        <p>hari-hari jadi terasa lebih rame gara-gara kamu. (EAA)</p>
-        <p>Hal kecil jadi kerasa spesial ;)😌✨</p>
-        <button onclick="nextLayer(4)">Lanjut ➜</button>
-    </div>
-
-    <!-- Layer 4: Fun & Playful -->
-    <div class="layer" id="layer4">
-       <h2>Aku cuma mau ngasih tau kamu </h2>
-        <p>kalo soal kamu ituu...</p>
-        <p>aku seneng, happy, ya gitu lah pokonyaa wkwwwk😤💗</p>
-        <button onclick="nextLayer(5)">Ada satu hal lagi...</button>
-    </div>
-
-    <!-- Layer 5: Confession -->
-    <div class="layer" id="layer5">
-        <h1>Jadi gini...</h1>
-        <p>Aku nyaman sama kamu, suka sama kamu</p>
-        <p>Aku suka cara kamu bikin hari biasa jadi luar biasa.</p>
-        <p>So kamu mau gak...</p>
-        <p>jadi pacarku? 💖</p>
-        <P>AKJDHASJKHDJDSDA</P>
-        <button id="yes">IYA 💘</button>
-        <button id="no">TIDAK 🙃</button>
-        <div class="success" id="success">
-            YEAYYYY! 💕<br>
-            Makasih ya udah mau sama aku.<br>
-            Maaf aku cuma bisa ginii hehehehee,<br>
-            TYSM MALOPP💗💗💗<br>
-            ASDHFKASHFAIFHSDKDADLKKD 💗
+    <body>
+        
+        <!-- TAP START -->
+        <div id="startScreen" onclick="startWeb()">
+            <h1>Tap anywhere 💗</h1>
         </div>
-    </div>
-
-    <script>
-        // Fungsi tap buat mulai musik
-      function startWeb() {
-          const music = document.getElementById("bg-music");
-          music.volume = 0.4;
-          music.play().catch(() => {});
-          document.getElementById("startScreen").style.display = "none";
-
-    nextLayer(1);
-}
-
         
-        // Fungsi navigasi layer
-        function nextLayer(layerNum) {
-            document.querySelectorAll('.layer').forEach(layer => layer.classList.remove('active'));
-            document.getElementById('layer' + layerNum).classList.add('active');
-        }
-
-        // Fungsi buat partikel love 8-bit
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.innerHTML = '💖';
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.fontSize = (Math.random() * 1 + 1) + 'rem'; // Ukuran random kecil-sedang
-            particle.style.opacity = Math.random() * 0.4 + 0.4; // Opacity random
-            particle.style.animationDuration = (Math.random() * 4 + 4) + 's'; // Kecepatan random pelan
-            // Random arah: up atau down
-            if (Math.random() > 0.5) {
-                particle.classList.add('up');
-            } else {
-                particle.classList.add('down');
+        <!-- MUSIC -->
+        <audio id="bg-music" loop>
+            <source src="call-you-mine.mp3" type="audio/mpeg">
+        </audio>
+        
+        <!-- PARTICLES -->
+        <div id="particles"></div>
+        
+        <!-- LAYERS -->
+        <div class="layer" id="layer1">
+            <h1>Haloooo kamu...</h1>
+            <p>Iya kamu kiki yang baca ini 👀</p>
+            <button onclick="nextLayer(2)">Next 💖</button>
+        </div>
+        
+        <div class="layer" id="layer2">
+            <p>Dari semenjak kenal kamu</p>
+            <p>hari biasa jadi beda 😌</p>
+            <button onclick="nextLayer(3)">Lanjut ➜</button>
+        </div>
+        
+        <div class="layer" id="layer3">
+            <p>Aku nyaman</p>
+            <p>dan seneng sama kamu 💗</p>
+            <button onclick="nextLayer(4)">Lagi...</button>
+        </div>
+        
+        <div class="layer" id="layer4">
+            <p>aku sadar aku banyak kurangnya</p>
+            <p>tapi soal kamu, aku selalu niat</p>
+            <button onclick="nextLayer(5)">...</button>
+        </div>
+        
+        <div class="layer" id="layer5">
+            <h2>Kamu mau gak</h2>
+            <p>jadi pacarku? 💖</p>
+            
+            <button id="yes">IYA 💘</button>
+            <button id="no">TIDAK 🙃</button>
+            
+            <div class="success" id="success">
+                <h2>YEAYYYY 💕</h2>
+                <p>Makasih ya…</p>
+            </div>
+        </div>
+        
+        <script>
+            /* START */
+            function startWeb(){
+                document.getElementById("bg-music").play();
+                document.getElementById("startScreen").style.display="none";
+                nextLayer(1);
             }
-            // Random warna
-            if (Math.random() > 0.66) {
-                particle.classList.add('yellow');
+            
+            /* LAYER CONTROL */
+            function nextLayer(n){
+                document.querySelectorAll(".layer").forEach(l=>l.classList.remove("active"));
+                document.getElementById("layer"+n).classList.add("active");
             }
-            document.getElementById('particles').appendChild(particle);
-            setTimeout(() => particle.remove(), 8000); // Hapus setelah animasi
-        }
-
-        // Generate partikel terus menerus
-        setInterval(createParticle, 300); // Lebih sering untuk jumlah banyak
-
-        // Logika tombol di layer 4
-        const noButton = document.getElementById('no');
-        const yesButton = document.getElementById('yes');
-        const success = document.getElementById('success');
-
-        // Fungsi pindah tombol TIDAK
-        function moveNoButton() {
-            const x = Math.random() * (window.innerWidth - 150);
-            const y = Math.random() * (window.innerHeight - 50);
-            noButton.style.left = x + 'px';
-            noButton.style.top = y + 'px';
-        }
-        // Event untuk hover dan touch
-        noButton.addEventListener('mouseover', moveNoButton);
-        noButton.addEventListener('touchstart', moveNoButton);
-
-        // Event untuk tombol IYA
-        yesButton.addEventListener('click', () => {
-            // Tambah lebih banyak partikel
-            for (let i = 0; i < 30; i++) createParticle();
-            // Glow background
-            document.body.style.boxShadow = 'inset 0 0 50px #ffb3ba';
-            // Sembunyikan tombol, tampilkan sukses
-            yesButton.style.display = 'none';
-            noButton.style.display = 'none';
-            success.style.display = 'block';
-        });
-    </script>
-</body>
+            
+            /* PARTICLES */
+            function spawnLove(){
+                const p=document.createElement("div");
+                p.className="particle";
+                p.innerText="💖";
+                p.style.left=Math.random()*100+"vw";
+                p.style.animationDuration=(Math.random()*4+4)+"s";
+                if(Math.random()>.5) p.classList.add("down");
+                document.getElementById("particles").appendChild(p);
+                setTimeout(()=>p.remove(),8000);
+            }
+            setInterval(spawnLove,250);
+            
+            /* BUTTON LOGIC */
+            const no=document.getElementById("no");
+            const yes=document.getElementById("yes");
+            const success=document.getElementById("success");
+            
+            no.addEventListener("mouseover",moveNo);
+            no.addEventListener("touchstart",moveNo);
+            
+            function moveNo(){
+                no.style.left=Math.random()*(window.innerWidth-120)+"px";
+                no.style.top=Math.random()*(window.innerHeight-50)+"px";
+            }
+            
+            yes.onclick=()=>{
+                no.style.display="none";
+                yes.style.display="none";
+                success.style.display="block";
+            };
+        </script>
+    </body>
 </html>
