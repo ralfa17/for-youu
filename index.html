@@ -12,6 +12,21 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
+        #startScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: pointer;
+}
+
         body {
             font-family: 'Press Start 2P', monospace;
             background: linear-gradient(135deg, #2e003e, #000080, #000000);
@@ -138,31 +153,36 @@
     </audio>
 
     <!-- Layer 1: Opening -->
-    <div class="layer active" id="layer1">
+    <div class="layer" id="layer1">
+    </div>
+    
+      <!-- Layer 2: Opening -->
+    <div class="layer active" id="layer2">
         <h1>Hey kamu...</h1>
         <p>Iya kamu, yang lagi baca ini 👀</p>
         <p>Aku cuma mau minta waktumu sebentar...</p>
-        <button onclick="nextLayer(2)">Next 💖</button>
+        <button onclick="nextLayer(3)">Next 💖</button>
     </div>
 
-    <!-- Layer 2: Build Up -->
-    <div class="layer" id="layer2">
+
+    <!-- Layer 3: Build Up -->
+    <div class="layer" id="layer3">
         <h2>Dari kapan yaa?, dari CH...</h2>
         <p>hari-hari jadi terasa lebih rame gara-gara kamu. (EAA)</p>
         <p>Hal kecil jadi kerasa spesial ;)😌✨</p>
-        <button onclick="nextLayer(3)">Lanjut ➜</button>
+        <button onclick="nextLayer(4)">Lanjut ➜</button>
     </div>
 
-    <!-- Layer 3: Fun & Playful -->
-    <div class="layer" id="layer3">
+    <!-- Layer 4: Fun & Playful -->
+    <div class="layer" id="layer4">
        <h2>Aku cuma mau ngasih tau kamu </h2>
         <p>kalo soal kamu ituu...</p>
         <p>aku seneng, happy, ya gitu lah pokonyaa wkwwwk😤💗</p>
-        <button onclick="nextLayer(4)">Ada satu hal lagi...</button>
+        <button onclick="nextLayer(5)">Ada satu hal lagi...</button>
     </div>
 
-    <!-- Layer 4: Confession -->
-    <div class="layer" id="layer4">
+    <!-- Layer 5: Confession -->
+    <div class="layer" id="layer5">
         <h1>Jadi gini...</h1>
         <p>Aku nyaman sama kamu, suka sama kamu</p>
         <p>Aku suka cara kamu bikin hari biasa jadi luar biasa.</p>
@@ -187,6 +207,7 @@
             music.volume = 0.4;
             music.play().catch(() => {});
             document.getElementById("startScreen").style.display = "none";
+            document.getElementById("layer1").classList.add("active");
         }
         
         // Fungsi navigasi layer
